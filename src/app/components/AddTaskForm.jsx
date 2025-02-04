@@ -14,7 +14,8 @@ export default function AddTaskForm() {
     const taskData = {
       title,
       description,
-      dueDate
+      dueDate,
+      status: "incomplete"
     }
 
     const res = await fetch("http://localhost:3000/api/task", {
