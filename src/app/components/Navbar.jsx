@@ -29,7 +29,7 @@ export default function Navbar () {
   );
 
   return (
-    <div className="navbar py-2 bg-slate-50 fixed shadow-md lg:px-12 md:px-6 px-4">
+    <div className="navbar py-2 bg-slate-100 border border-gray-200 fixed z-10 shadow-sm lg:px-12 md:px-6 px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

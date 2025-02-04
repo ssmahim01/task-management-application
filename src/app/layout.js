@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         <ToastContainer />
-        <main>
+        <main className="min-h-[calc(100vh-280px)]">
         {children}
         </main>
         <Footer />
