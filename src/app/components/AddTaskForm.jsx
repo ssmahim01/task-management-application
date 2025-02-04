@@ -1,13 +1,35 @@
 "use client"
+import { IoMdAddCircle } from "react-icons/io";
+import { toast } from "react-toastify";
+
 export default function AddTaskForm() {
-  const handleAddTask = (e) => {
+  const handleAddTask = async(e) => {
     e.preventDefault();
 
     const form = e.target;
-    const taskTitle = form.taskTitle.value;
+    const title = form.taskTitle.value;
     const description = form.description.value;
     const dueDate = form.dueDate.value;
-    console.log(taskTitle, description, dueDate);
+    // console.log(taskTitle, description, dueDate);
+    const taskData = {
+      title,
+      description,
+      dueDate
+    }
+
+    const res = await fetch("http://localhost:3000/api/task", {
+      method: "POST",
+      body: JSON.stringify(taskData),
+    });
+    console.log(res);
+    if (res.ok) {
+      toast.success("Successfully added the task", {
+        position: "top-center",
+      });
+      form.reset();
+    } else {
+      toast.error("Failed to add the task!");
+    }
   };
 
   return (
@@ -59,9 +81,9 @@ export default function AddTaskForm() {
               />
             </div>
 
-            <div className="form-control mt-6 lg:w-2/5 md:w-1/2 w-11/12 mx-auto">
-              <button className="btn bg-teal-600 border-none text-white/90 text-lg hover:btn-primary font-bold rounded-full">
-                 Add Task
+            <div className="form-control mt-6 lg:w-1/4 md:w-2/5 w-11/12">
+              <button className="btn bg-teal-600 border-none text-white/90 hover:btn-primary font-bold rounded-md flex gap-2 items-center">
+                <IoMdAddCircle className="text-xl" /> <span className="text-lg">Add Task</span>
               </button>
             </div>
           </form>
