@@ -10,7 +10,7 @@ export default function ManageTasksTable({ tasksData }) {
   const handleDeleteTask = async (id) => {
     console.log(id);
 
-    const response = await fetch(`https://task-management.vercel.app/api/task/${id}`, {
+    const response = await fetch(`http://localhost:3000/api/task/${id}`, {
       method: "DELETE",
     });
 
@@ -49,7 +49,7 @@ export default function ManageTasksTable({ tasksData }) {
                     {task?.description.slice(0, 40)}...
                   </td>
                   <td className="text-gray-600 font-semibold">
-                    {task?.dueDate}
+                    {new Date(task?.dueDate).toLocaleDateString("en-UK")}
                   </td>
                   <td>
                     <Link

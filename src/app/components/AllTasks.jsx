@@ -12,13 +12,13 @@ export default function AllTasks({tasks}) {
             <h4 className="text-gray-800 text-xl font-bold mb-2">
               {task?.title}
             </h4>
-            <p className="text-base text-gray-600 font-semibold">
+            <p className="text-sm text-gray-600 font-semibold">
               {task?.description}
             </p>
             <p className="text-lg">
               <span className="text-gray-800 font-bold">Due Date: </span>{" "}
               <span className="text-gray-600 font-semibold">
-                {task?.dueDate}
+              {new Date(task?.dueDate).toLocaleDateString("en-UK")}
               </span>
             </p>
           </div>

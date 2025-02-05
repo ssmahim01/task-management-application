@@ -1,7 +1,7 @@
 import AllTasks from "./components/AllTasks";
 
 export default async function Home() {
-  const response = await fetch("https://task-management.vercel.app/api/task", {
+  const response = await fetch("http://localhost:3000/api/task", {
     method: "GET"
   });
   const tasks = await response.json();

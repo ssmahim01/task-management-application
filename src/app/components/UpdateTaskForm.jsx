@@ -1,12 +1,14 @@
 "use client"
+import { useRouter } from "next/navigation";
 import { MdUpdate } from "react-icons/md";
 import { toast } from "react-toastify";
 
 export default function UpdateTaskForm({task}) {
+  const router = useRouter();
   const handleUpdateTask = async(event) => {
     event.preventDefault();
 
-    const form = e.target;
+    const form = event.target;
     const title = form.taskTitle.value;
     const description = form.description.value;
     const dueDate = form.dueDate.value;
@@ -17,16 +19,17 @@ export default function UpdateTaskForm({task}) {
       dueDate,
     }
 
-    const res = await fetch("https://task-management.vercel.app/api/task", {
+    const res = await fetch(`http://localhost:3000/api/task/${task?._id}`, {
       method: "PATCH",
       body: JSON.stringify(taskData),
     });
-    console.log(res);
+    // console.log(res);
     if (res.ok) {
       toast.success("Successfully updated the task", {
         position: "top-center",
       });
-      form.reset();
+      router.refresh();
+      router.push("/manage-tasks");
     } else {
       toast.error("Failed to update the task!");
     }

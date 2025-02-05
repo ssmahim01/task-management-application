@@ -11,6 +11,23 @@ export const GET = async (req, { params }) => {
     return NextResponse.json(result);
 }
 
+export const PATCH = async (req, { params }) => {
+    const { id } = await params;
+    const query = { _id: new ObjectId(id) };
+    const taskCollection = mongoDB(collectionNames.taskCollection);
+    
+        const body = await req.json();
+        const filter = {
+            $set: { ...body }
+        }
+
+        const option = { upsert: true };
+        const updateResult = await taskCollection.updateOne(query, filter, option);
+
+        revalidatePath("/manage-tasks");
+        return NextResponse.json(updateResult);
+}
+
 export const DELETE = async (req, { params }) => {
     const { id } = await params;
     const query = { _id: new ObjectId(id) };
