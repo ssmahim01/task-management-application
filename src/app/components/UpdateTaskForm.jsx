@@ -19,7 +19,7 @@ export default function UpdateTaskForm({task}) {
       dueDate,
     }
 
-    const res = await fetch(`http://localhost:3000/api/task/${task?._id}`, {
+    const res = await fetch(`https://task-management-application-azure-two.vercel.app/api/task/${task?._id}`, {
       method: "PATCH",
       body: JSON.stringify(taskData),
     });

@@ -10,7 +10,7 @@ export default function ManageTasksTable({ tasksData }) {
   const handleDeleteTask = async (id) => {
     console.log(id);
 
-    const response = await fetch(`http://localhost:3000/api/task/${id}`, {
+    const response = await fetch(`https://task-management-application-azure-two.vercel.app/api/task/${id}`, {
       method: "DELETE",
     });
 

@@ -18,7 +18,7 @@ export default function AddTaskForm() {
       status: "incomplete"
     }
 
-    const res = await fetch("http://localhost:3000/api/task", {
+    const res = await fetch("https://task-management-application-azure-two.vercel.app/api/task", {
       method: "POST",
       body: JSON.stringify(taskData),
     });
