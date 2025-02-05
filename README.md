@@ -1,33 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Management Application
 
-## Getting Started
+A simple Task Management application built using **Next.js with Server Actions**. This application allows users to **create, view, edit, and delete tasks**, along with marking them as **complete/incomplete**. The data is persisted using **MongoDB**.
 
-First, run the development server:
+## Features
+- ✅ **CRUD Operations**: Create, Read, Update, and Delete tasks.
+- ✅ **Task Status**: Mark tasks as complete/incomplete.
+- ✅ **Basic Task Details**: Title, Description, and Due Date.
+- ✅ **Data Persistence**: MongoDB for storing tasks.
+- ✅ **Error Handling & Loading States**: Smooth user experience.
 
+## Tech Stack
+- **Frontend**: Next.js (latest version)
+- **Backend**: Next.js Server Actions
+- **Database**: MongoDB
+- **Deployment**: Vercel
+
+## Installation & Setup
+Follow these steps to set up the project locally:
+
+### 1️⃣ Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ssmahim01/task-management-application.git
+cd task-management-application
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
+```bash
+npm install  # or yarn install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3️⃣ Configure Environment Variables
+Do not forget to create a `.env.local` file in the root directory then add the secret keys with values
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4️⃣ Run the Development Server
+```bash
+npm run dev  # or yarn dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Deployment
+The application is deployed on **Vercel**. You can access it here:
+[🔗 Vercel Deployment URL](https://task-management-application-azure-two.vercel.app)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
 ## Deploy on Vercel
 
