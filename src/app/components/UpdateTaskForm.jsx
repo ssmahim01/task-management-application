@@ -1,10 +1,10 @@
 "use client"
-import { IoMdAddCircle } from "react-icons/io";
+import { MdUpdate } from "react-icons/md";
 import { toast } from "react-toastify";
 
-export default function AddTaskForm() {
-  const handleAddTask = async(e) => {
-    e.preventDefault();
+export default function UpdateTaskForm({task}) {
+  const handleUpdateTask = async(event) => {
+    event.preventDefault();
 
     const form = e.target;
     const title = form.taskTitle.value;
@@ -15,21 +15,20 @@ export default function AddTaskForm() {
       title,
       description,
       dueDate,
-      status: "incomplete"
     }
 
     const res = await fetch("https://task-management.vercel.app/api/task", {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify(taskData),
     });
     console.log(res);
     if (res.ok) {
-      toast.success("Successfully added the task", {
+      toast.success("Successfully updated the task", {
         position: "top-center",
       });
       form.reset();
     } else {
-      toast.error("Failed to add the task!");
+      toast.error("Failed to update the task!");
     }
   };
 
@@ -37,13 +36,13 @@ export default function AddTaskForm() {
     <div className="hero py-20">
       <div className="lg:w-3/5 w-11/12 mx-auto flex-col">
         <div className="text-center pb-5">
-          <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold">
-            Add New Task
+          <h1 className="md:text-4xl text-3xl font-bold">
+            Update The Task
           </h1>
         </div>
 
         <div className="bg-base-200 bg-opacity-70 shrink-0 shadow-lg rounded-lg">
-          <form onSubmit={handleAddTask} className="card-body">
+          <form onSubmit={handleUpdateTask} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="font-bold">Task Title</span>
@@ -51,6 +50,7 @@ export default function AddTaskForm() {
               <input
                 type="text"
                 name="taskTitle"
+                defaultValue={task?.title}
                 pattern="^[A-Za-z\s]*$"
                 placeholder="Write the task name"
                 className="input input-bordered font-medium"
@@ -64,6 +64,7 @@ export default function AddTaskForm() {
               </label>
               <textarea
                 name="description"
+                defaultValue={task?.description}
                 placeholder="Task Description"
                 className="textarea textarea-bordered textarea-md font-medium"
                 required
@@ -77,14 +78,15 @@ export default function AddTaskForm() {
               <input
                 type="date"
                 name="dueDate"
+                defaultValue={task?.dueDate}
                 className="input input-bordered font-medium"
                 required
               />
             </div>
 
             <div className="form-control mt-6 lg:w-1/4 md:w-2/5 w-11/12">
-              <button className="btn bg-teal-600 border-none text-white/90 hover:btn-primary font-bold rounded-md flex gap-2 items-center">
-                <IoMdAddCircle className="text-xl" /> <span className="text-lg">Add Task</span>
+              <button className="btn bg-emerald-600 border-none text-white/90 hover:btn-primary font-bold rounded-md flex gap-2 items-center">
+                <MdUpdate className="text-xl" /> <span className="text-lg">Update Task</span>
               </button>
             </div>
           </form>
