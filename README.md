@@ -2,6 +2,8 @@
 
 A simple Task Management application built using **Next.js with Server Actions**. This application allows users to **create, view, edit, and delete tasks**, along with marking them as **complete/incomplete**. The data is persisted using **MongoDB**.
 
+---
+
 ## Features
 - ✅ **CRUD Operations**: Create, Read, Update, and Delete tasks.
 - ✅ **Task Status**: Mark tasks as complete/incomplete.
@@ -9,11 +11,15 @@ A simple Task Management application built using **Next.js with Server Actions**
 - ✅ **Data Persistence**: MongoDB for storing tasks.
 - ✅ **Error Handling & Loading States**: Smooth user experience.
 
+---
+
 ## Tech Stack
 - **Frontend**: Next.js (latest version)
 - **Backend**: Next.js Server Actions
 - **Database**: MongoDB
 - **Deployment**: Vercel
+
+---
 
 ## Installation & Setup
 Follow these steps to set up the project locally:
@@ -31,13 +37,15 @@ npm install  # or yarn install
 
 ### 3️⃣ Configure Environment Variables
 Do not forget to create a `.env.local` file in the root directory then add the secret keys with values
-```
 
 ### 4️⃣ Run the Development Server
 ```bash
-npm run dev  # or yarn dev
+npm run dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
 
 ## Deployment
 The application is deployed on **Vercel**. You can access it here:
