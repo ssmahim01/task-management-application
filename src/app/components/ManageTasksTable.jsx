@@ -7,12 +7,39 @@ import { toast } from "react-toastify";
 
 export default function ManageTasksTable({ tasksData }) {
   const router = useRouter();
-  const handleDeleteTask = async (id) => {
-    console.log(id);
 
-    const response = await fetch(`https://task-management-application-azure-two.vercel.app/api/task/${id}`, {
-      method: "DELETE",
-    });
+  const handleStatusUpdate = async (e, taskId) => {
+    const statusInfo = {
+      status: e.target.value,
+    };
+
+    const response = await fetch(
+      `https://task-management-application-azure-two.vercel.app/api/status/${taskId}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(statusInfo),
+      }
+    );
+
+    if (response.ok) {
+      toast.success(`Changed status to ${e.target.value}`, {
+        position: "top-center",
+      });
+      router.refresh();
+    } else {
+      toast.error("Something went wrong!");
+    }
+  };
+
+  const handleDeleteTask = async (id) => {
+    // console.log(id);
+
+    const response = await fetch(
+      `https://task-management-application-azure-two.vercel.app/api/task/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (response.ok) {
       toast.success("Successfully deleted the task", {
@@ -32,10 +59,11 @@ export default function ManageTasksTable({ tasksData }) {
       <div className="overflow-x-auto">
         <table className="w-full table table-zebra">
           <thead className="border border-gray-200">
-            <tr className="*:text-gray-700">
+            <tr className="*:text-gray-200 bg-teal-600 font-bold">
               <th>Task Title</th>
               <th>Task Description</th>
               <td>Due Date</td>
+              <td>Status</td>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -52,12 +80,24 @@ export default function ManageTasksTable({ tasksData }) {
                     {new Date(task?.dueDate).toLocaleDateString("en-UK")}
                   </td>
                   <td>
+                    <select
+                      defaultValue={task?.status}
+                      onChange={(e) => handleStatusUpdate(e, task?._id)}
+                      className="select select-bordered select-xs w-full max-w-xs *:font-semibold"
+                    >
+                      <option disabled>Change Status</option>
+                      <option value="Incomplete">Incomplete</option>
+                      <option value="Complete">Complete</option>
+                    </select>
+                  </td>
+                  <td>
                     <Link
-                      className="btn btn-neutral btn-sm text-white font-bold flex gap-2 items-center"
                       href={`/update-task/${task?._id}`}
                     >
-                      <FaRegEdit className="lg:block hidden text-xl" />{" "}
+                      <button className="btn btn-neutral btn-sm text-white font-bold flex gap-2 items-center">
+                      <FaRegEdit className="lg:block hidden" />{" "}
                       <span>Update</span>
+                      </button>
                     </Link>
                   </td>
 
@@ -66,7 +106,7 @@ export default function ManageTasksTable({ tasksData }) {
                       onClick={() => handleDeleteTask(task?._id)}
                       className="btn btn-error btn-sm text-white font-bold flex gap-2 items-center"
                     >
-                      <FaRegTrashCan className="lg:block hidden text-xl" />{" "}
+                      <FaRegTrashCan className="lg:block hidden" />{" "}
                       <span>Delete</span>
                     </button>
                   </td>

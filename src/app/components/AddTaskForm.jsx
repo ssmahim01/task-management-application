@@ -15,14 +15,14 @@ export default function AddTaskForm() {
       title,
       description,
       dueDate,
-      status: "incomplete"
+      status: "Incomplete"
     }
 
     const res = await fetch("https://task-management-application-azure-two.vercel.app/api/task", {
       method: "POST",
       body: JSON.stringify(taskData),
     });
-    console.log(res);
+    // console.log(res);
     if (res.ok) {
       toast.success("Successfully added the task", {
         position: "top-center",
