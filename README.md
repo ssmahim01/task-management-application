@@ -1,4 +1,4 @@
-# Task Management Application
+# 👨‍💼Task Management Application
 
 A simple Task Management application built using **Next.js with Server Actions**. This application allows users to **create, view, edit, and delete tasks**, along with marking them as **complete/incomplete**. The data is persisted using **MongoDB**.
 
@@ -32,7 +32,7 @@ cd task-management-application
 
 ### 2️⃣ Install Dependencies
 ```bash
-npm install  # or yarn install
+npm install
 ```
 
 ### 3️⃣ Configure Environment Variables
@@ -49,6 +49,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Deployment
 The application is deployed on **Vercel**. You can access it here:
+<br>
 [🔗 Vercel Deployment URL](https://task-management-application-azure-two.vercel.app)
 
 ---
