@@ -71,7 +71,7 @@ export default function ManageTasksTable({ tasksData }) {
           <tbody>
             {tasksData?.map((task) => {
               return (
-                <tr key={task?._id} className="border border-gray-200">
+                <tr key={task?._id} className="hover border border-gray-200">
                   <td className="text-gray-600 font-semibold">{task?.title}</td>
                   <td className="text-gray-600 font-semibold">
                     {task?.description.slice(0, 40)}...
@@ -83,7 +83,7 @@ export default function ManageTasksTable({ tasksData }) {
                     <select
                       defaultValue={task?.status}
                       onChange={(e) => handleStatusUpdate(e, task?._id)}
-                      className="select select-bordered select-xs w-full max-w-xs *:font-semibold"
+                      className="select select-primary select-bordered select-xs w-full max-w-md *:font-semibold"
                     >
                       <option disabled>Change Status</option>
                       <option value="Incomplete">Incomplete</option>
